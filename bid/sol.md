@@ -32,29 +32,37 @@
 
 采购事件信息表：
 
-* id, INT, 主键,
-corporateId, INT, 采购公司Id,
-deal, BIGINT, 成交金额,
-currency, INT, 币种,
-date, DATETIME, 交易日期,
-form, INT, 成交方式（公开招投标、直接采购）
+| name        | type    | description                     |
+| ----------- | ------- | ------------------------------- |
+| id          | INT     | 主键                            |
+| corporateId | INT     | 采购公司Id                      |
+| deal        | BIGINT  | 成交金额                        |
+| currency    | INT     | 币种                            |
+| date        | DATETIME| 交易日期                        |
+| form        | INT     | 成交方式（公开招投标、直接采购）|
 
 采购关联信息表（通常情况下可以仅关注第一候选人）：
 
-* id, INT, 主键
-corporateId, INT, 关联的公司主键,
-bidId, INT, 关联的采购主键,
-bidStatus, INT, 候选次序（第一候选人、第二候选人等）
+| name        | type | description               |
+| ----------- | ---- | ------------------------- |
+| id          | INT  | 主键                      |
+| corporateId | INT  | 关联的公司主键            |
+| bidId       | INT  | 关联的采购主键            |
+| bidStatus   | INT  | 候选次序（第一候选人、第二候选人等） |
 
 采购标签关联信息表：
 
-* id, INT, 主键,
-tagId, INT, 关联的tag主键,
-bidId, INT, 关联的采购主键,
-confidence, FLOAT, 当一个bid关联多个一级Tag时，confidence最大的为主行业。
+| name      | type  | description                                                                 |
+| --------- | ----- | --------------------------------------------------------------------------- |
+| id        | INT   | 主键                                                                        |
+| tagId     | INT   | 关联的tag主键                                                               |
+| bidId     | INT   | 关联的采购主键                                                              |
+| confidence| FLOAT | 当一个bid关联多个一级Tag时，confidence最大的为主行业。 |
 
 采购行业关联信息表：
 
-* id, INT(11), 主键,
-bidId, INT, 关联的采购主键,
-hangyeId, INT(11), 行业关联的主键
+| name      | type     | description           |
+| --------- | -------- | --------------------- |
+| id        | INT(11)  | 主键                  |
+| bidId     | INT      | 关联的采购主键        |
+| hangyeId  | INT(11)  | 行业关联的主键        |
