@@ -6,6 +6,7 @@
 * check_ipo.py: 查询给出公司名单的上市情况；
 * check_dl_pf.py: 筛选出Deallog和Peer Funds名单中与给出公司名单匹配的部分；
 * sheet_match_enable.py: 各类匹配函数的实现；（上一个项目中）若作为主函数，可以根据融资历史的条件筛选PF列表。
+* track_modify.py: （未启用）将公司全名删去前后缀并添加通配符以实现关键词匹配的部分函数。
 
 ## 函数功能与接口
 

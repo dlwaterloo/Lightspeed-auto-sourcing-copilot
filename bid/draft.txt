@@ -1,0 +1,38 @@
+对于不同公司，招投标信息需要分别抓取整理，招标过程可以忽略，只看结果
+
+
+招投标信息分为货物、工程、服务、其他
+出于行业性质考虑，优先级其他>服务>货物=工程，后两种可忽略不放入库中
+
+不止需要招投标，直接采购信息可以一并整理
+
+针对结合烯牛数据sql和数据库方式的数据字典
+（作为excel表格的话，把id修改为实际的公司名或事件名即可，然后可以忽略创建时间、修改时间和有效）：
+createTime, DATETIME, 记录创建时间,
+modifyTime, DATETIME, 记录修改时间,
+active, CHAR(1), 记录是否有效（值为null或Y时有效，其他无效）
+
+采购事件信息表：
+id, INT, 主键,
+corporateId, INT, 采购公司Id,
+deal, BIGINT, 成交金额,
+currency, INT, 币种,
+date, DATETIME, 交易日期,
+form, INT, 成交方式（公开招投标、直接采购）,
+
+采购关联信息表（通常情况下可以仅关注第一候选人）：
+id, INT, 主键
+corporateId, INT, 关联的公司主键,
+bidId, INT, 关联的采购主键,
+bidStatus, INT, 候选次序（第一候选人、第二候选人等）
+
+采购标签关联信息表：
+id, INT, 主键,
+tagId, INT, 关联的tag主键,
+bidId, INT, 关联的采购主键,
+confidence, FLOAT, 当一个bid关联多个一级Tag时，confidence最大的为主行业。
+
+采购行业关联信息表：
+id, INT(11), 主键,
+bidId, INT, 关联的采购主键,
+hangyeId, INT(11), 行业关联的主键
